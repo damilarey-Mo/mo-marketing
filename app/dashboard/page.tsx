@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
+import ThemeSwitcher from "@/app/components/theme-switcher";
 
 // Mock data
 const stats = [
@@ -62,29 +63,30 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
+      <div className="flex items-center justify-center min-h-screen dark:bg-dark-900">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600 dark:border-primary-400"></div>
       </div>
     );
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 dark:bg-dark-900 min-h-screen">
       {/* Dashboard header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-white dark:bg-dark-800 shadow-sm dark:shadow-dark-lg border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-primary-600">
+            <Link href="/" className="text-xl font-bold text-primary-600 dark:text-primary-400">
               SaaSify
             </Link>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
+            <ThemeSwitcher />
+            <button className="p-1 rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-300 dark:hover:text-gray-200 focus:outline-none">
               <span className="sr-only">View notifications</span>
               <Bell className="h-6 w-6" />
             </button>
             <button 
-              className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-800"
+              className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-gray-800 dark:hover:text-gray-100"
               onClick={handleLogout}
             >
               <span>{userName}</span>
@@ -100,64 +102,64 @@ export default function DashboardPage() {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-64 min-h-screen bg-white border-r border-gray-200 hidden md:block">
+        <aside className="w-64 min-h-screen bg-white dark:bg-dark-800 border-r border-gray-200 dark:border-gray-700 hidden md:block">
           <nav className="p-4 space-y-2">
-            <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            <div className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Main
             </div>
             <Link 
               href="/dashboard" 
-              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-primary-700 bg-primary-50"
+              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30"
             >
-              <BarChart className="mr-3 h-5 w-5 text-primary-500" aria-hidden="true" />
+              <BarChart className="mr-3 h-5 w-5 text-primary-500 dark:text-primary-400" aria-hidden="true" />
               Dashboard
             </Link>
             <Link 
               href="#" 
-              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-primary-700 hover:bg-gray-50"
+              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-gray-50 dark:hover:bg-dark-700"
             >
-              <Users className="mr-3 h-5 w-5 text-gray-400 group-hover:text-primary-500" aria-hidden="true" />
+              <Users className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-primary-500 dark:group-hover:text-primary-400" aria-hidden="true" />
               Team
             </Link>
             <Link 
               href="#" 
-              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-primary-700 hover:bg-gray-50"
+              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-gray-50 dark:hover:bg-dark-700"
             >
-              <FileText className="mr-3 h-5 w-5 text-gray-400 group-hover:text-primary-500" aria-hidden="true" />
+              <FileText className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-primary-500 dark:group-hover:text-primary-400" aria-hidden="true" />
               Projects
             </Link>
             <Link 
               href="#" 
-              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-primary-700 hover:bg-gray-50"
+              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-gray-50 dark:hover:bg-dark-700"
             >
-              <Calendar className="mr-3 h-5 w-5 text-gray-400 group-hover:text-primary-500" aria-hidden="true" />
+              <Calendar className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-primary-500 dark:group-hover:text-primary-400" aria-hidden="true" />
               Calendar
             </Link>
             
-            <div className="px-3 py-2 mt-6 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+            <div className="px-3 py-2 mt-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               Support
             </div>
             <Link 
               href="#" 
-              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-primary-700 hover:bg-gray-50"
+              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-gray-50 dark:hover:bg-dark-700"
             >
-              <HelpCircle className="mr-3 h-5 w-5 text-gray-400 group-hover:text-primary-500" aria-hidden="true" />
+              <HelpCircle className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-primary-500 dark:group-hover:text-primary-400" aria-hidden="true" />
               Help Center
             </Link>
             <Link 
               href="#" 
-              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 hover:text-primary-700 hover:bg-gray-50"
+              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-gray-50 dark:hover:bg-dark-700"
             >
-              <Settings className="mr-3 h-5 w-5 text-gray-400 group-hover:text-primary-500" aria-hidden="true" />
+              <Settings className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-primary-500 dark:group-hover:text-primary-400" aria-hidden="true" />
               Settings
             </Link>
             
             <div className="pt-6">
               <button
                 onClick={handleLogout}
-                className="group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full text-gray-700 hover:text-red-700 hover:bg-red-50"
+                className="group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full text-gray-700 dark:text-gray-300 hover:text-red-700 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
               >
-                <LogOut className="mr-3 h-5 w-5 text-gray-400 group-hover:text-red-500" aria-hidden="true" />
+                <LogOut className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500 group-hover:text-red-500 dark:group-hover:text-red-400" aria-hidden="true" />
                 Logout
               </button>
             </div>
@@ -169,7 +171,7 @@ export default function DashboardPage() {
           <div className="max-w-6xl mx-auto">
             {/* Welcome section */}
             <motion.div 
-              className="bg-primary-600 rounded-lg shadow-md p-6 text-white mb-6"
+              className="bg-gradient-to-r from-primary-600 to-primary-700 dark:from-primary-700 dark:to-primary-800 rounded-lg shadow-md p-6 text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -178,7 +180,7 @@ export default function DashboardPage() {
               <p className="mt-1">Here's what's happening with your projects today.</p>
               <div className="mt-4">
                 <Button
-                  className="bg-white text-primary-600 hover:bg-primary-50"
+                  className="bg-white text-primary-600 hover:bg-primary-50 dark:bg-white/90 dark:hover:bg-white/100 dark:text-primary-700"
                   size="sm"
                 >
                   Create New Project
@@ -191,19 +193,23 @@ export default function DashboardPage() {
               {stats.map((stat, index) => (
                 <motion.div 
                   key={stat.name}
-                  className="bg-white rounded-lg shadow-sm p-6"
+                  className="bg-white dark:bg-dark-800 rounded-lg shadow-sm dark:shadow-dark-lg p-6"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
                   <div className="flex items-center">
-                    <div className="flex-shrink-0 p-3 rounded-md bg-primary-100 text-primary-600">
+                    <div className="flex-shrink-0 p-3 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                       <stat.icon className="h-6 w-6" />
                     </div>
                     <div className="ml-4">
-                      <h2 className="text-sm font-medium text-gray-500">{stat.name}</h2>
-                      <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
-                      <p className={`text-sm ${stat.change.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
+                      <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400">{stat.name}</h2>
+                      <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stat.value}</p>
+                      <p className={`text-sm ${
+                        stat.change.startsWith('+') 
+                          ? 'text-green-600 dark:text-green-400' 
+                          : 'text-red-600 dark:text-red-400'
+                      }`}>
                         {stat.change}
                       </p>
                     </div>
@@ -216,28 +222,28 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               {/* Recent activity */}
               <motion.div 
-                className="bg-white rounded-lg shadow-sm p-6"
+                className="bg-white dark:bg-dark-800 rounded-lg shadow-sm dark:shadow-dark-lg p-6"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h2 className="text-lg font-medium text-gray-900 mb-4">Recent Activity</h2>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Recent Activity</h2>
                 <div className="space-y-4">
                   {recentActivities.map((activity) => (
                     <div key={activity.id} className="flex items-start">
                       <div className="flex-shrink-0">
-                        <div className="w-2 h-2 mt-2 rounded-full bg-primary-500"></div>
+                        <div className="w-2 h-2 mt-2 rounded-full bg-primary-500 dark:bg-primary-400"></div>
                       </div>
                       <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-900">{activity.user}</p>
-                        <p className="text-sm text-gray-500">{activity.action}</p>
-                        <p className="text-xs text-gray-400">{activity.time}</p>
+                        <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{activity.user}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{activity.action}</p>
+                        <p className="text-xs text-gray-400 dark:text-gray-500">{activity.time}</p>
                       </div>
                     </div>
                   ))}
                 </div>
                 <div className="mt-4">
-                  <Link href="#" className="text-sm font-medium text-primary-600 hover:text-primary-500">
+                  <Link href="#" className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-300">
                     View all activity
                   </Link>
                 </div>
@@ -245,23 +251,23 @@ export default function DashboardPage() {
 
               {/* Upcoming events */}
               <motion.div 
-                className="bg-white rounded-lg shadow-sm p-6"
+                className="bg-white dark:bg-dark-800 rounded-lg shadow-sm dark:shadow-dark-lg p-6"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <h2 className="text-lg font-medium text-gray-900 mb-4">Upcoming Events</h2>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Upcoming Events</h2>
                 <div className="space-y-4">
                   {upcomingEvents.map((event) => (
                     <div key={event.id} className="flex items-start">
                       <div className="flex-shrink-0">
-                        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-100 text-primary-600">
+                        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                           <Calendar className="h-5 w-5" />
                         </div>
                       </div>
                       <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-900">{event.title}</p>
-                        <p className="text-sm text-gray-500">{event.date}</p>
+                        <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{event.title}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{event.date}</p>
                       </div>
                     </div>
                   ))}
@@ -270,7 +276,7 @@ export default function DashboardPage() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full"
+                    className="w-full border-gray-300 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-dark-700"
                   >
                     <Calendar className="h-4 w-4 mr-2" />
                     View Calendar

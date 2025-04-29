@@ -7,6 +7,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/app/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeSwitcher from "./theme-switcher";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -58,8 +59,8 @@ export default function Navbar() {
     <header className={cn(
       "fixed w-full z-50 transition-all duration-300 ease-in-out",
       scrolled
-        ? "bg-white/95 shadow-md backdrop-blur-sm"
-        : "bg-white/90 border-b border-gray-100"
+        ? "bg-white/95 shadow-md backdrop-blur-sm dark:bg-black dark:shadow-dark-lg"
+        : "bg-white/90 border-b border-gray-100 dark:bg-black dark:border-gray-800"
     )}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <motion.div 
@@ -74,15 +75,16 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="text-xl font-bold text-primary-600">SaaSify</span>
+              <span className="text-xl font-bold text-primary-600 dark:text-yellow-400">SaaSify</span>
             </motion.div>
           </Link>
         </motion.div>
         
         <div className="flex lg:hidden">
+          <ThemeSwitcher />
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 ml-2 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-yellow-400"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -103,8 +105,8 @@ export default function Navbar() {
                   <button
                     onClick={() => handleSubmenuToggle(item.name)}
                     className={cn(
-                      "inline-flex items-center text-sm font-semibold leading-6 text-gray-900 hover:text-primary-600",
-                      openSubmenu === item.name && "text-primary-600"
+                      "inline-flex items-center text-sm font-semibold leading-6 text-gray-900 dark:text-yellow-400 hover:text-primary-600 dark:hover:text-yellow-300",
+                      openSubmenu === item.name && "text-primary-600 dark:text-yellow-300"
                     )}
                   >
                     {item.name}
@@ -122,13 +124,13 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute left-0 mt-2 w-48 rounded-md bg-white py-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        className="absolute left-0 mt-2 w-48 rounded-md bg-white dark:bg-black py-2 shadow-lg ring-1 ring-black ring-opacity-5 dark:ring-yellow-500/30 focus:outline-none"
                       >
                         {item.submenu.map((subitem) => (
                           <Link
                             key={subitem.name}
                             href={subitem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            className="block px-4 py-2 text-sm text-gray-700 dark:text-yellow-400 hover:bg-gray-100 dark:hover:bg-black/70"
                             onClick={() => setOpenSubmenu(null)}
                           >
                             {subitem.name}
@@ -144,14 +146,14 @@ export default function Navbar() {
                   className={cn(
                     "text-sm font-semibold leading-6 transition-colors duration-200",
                     isActive(item.href)
-                      ? "text-primary-600"
-                      : "text-gray-900 hover:text-primary-600"
+                      ? "text-primary-600 dark:text-yellow-300"
+                      : "text-gray-900 dark:text-yellow-400 hover:text-primary-600 dark:hover:text-yellow-300"
                   )}
                 >
                   {item.name}
                   {isActive(item.href) && (
                     <motion.div 
-                      className="h-0.5 bg-primary-600 mt-0.5"
+                      className="h-0.5 bg-primary-600 dark:bg-yellow-400 mt-0.5"
                       layoutId="navbar-active-indicator"
                     />
                   )}
@@ -162,22 +164,30 @@ export default function Navbar() {
         </motion.div>
         
         <motion.div 
-          className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4"
+          className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-4"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
+          <ThemeSwitcher />
           <Link href="/auth/login">
-            <Button variant="outline" className="transition-all duration-300 ease-in-out">
-              Log in
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                variant="outline" 
+                className="transition-all duration-300 ease-in-out dark:text-yellow-400 dark:border-yellow-500 dark:hover:bg-black hover:shadow-md"
+              >
+                Log in
+              </Button>
+            </motion.div>
           </Link>
           <Link href="/auth/signup">
-            <Button 
-              className="transition-all duration-300 ease-in-out bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700"
-            >
-              Sign up
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                className="transition-all duration-300 ease-in-out bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-yellow-500 dark:to-yellow-600 dark:text-gray-900 dark:hover:from-yellow-400 dark:hover:to-yellow-500 hover:shadow-lg"
+              >
+                Sign up
+              </Button>
+            </motion.div>
           </Link>
         </motion.div>
       </nav>
@@ -193,7 +203,7 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
           >
             <motion.div 
-              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-yellow-500/30"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -202,11 +212,11 @@ export default function Navbar() {
               <div className="flex items-center justify-between">
                 <Link href="/" className="-m-1.5 p-1.5" onClick={closeMenu}>
                   <span className="sr-only">SaaSify</span>
-                  <span className="text-xl font-bold text-primary-600">SaaSify</span>
+                  <span className="text-xl font-bold text-primary-600 dark:text-yellow-400">SaaSify</span>
                 </Link>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-yellow-400"
                   onClick={closeMenu}
                 >
                   <span className="sr-only">Close menu</span>
@@ -214,7 +224,7 @@ export default function Navbar() {
                 </button>
               </div>
               <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/10">
+                <div className="-my-6 divide-y divide-gray-500/10 dark:divide-yellow-500/20">
                   <div className="space-y-2 py-6">
                     {navigation.map((item) => (
                       <div key={item.name}>
@@ -222,7 +232,7 @@ export default function Navbar() {
                           <div>
                             <button
                               onClick={() => handleSubmenuToggle(item.name)}
-                              className="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                              className="flex w-full items-center justify-between rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 dark:text-yellow-400 hover:bg-gray-50 dark:hover:bg-dark-800"
                             >
                               {item.name}
                               <ChevronDown
@@ -246,7 +256,7 @@ export default function Navbar() {
                                       <Link
                                         key={subitem.name}
                                         href={subitem.href}
-                                        className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                        className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 dark:text-yellow-400 hover:bg-gray-50 dark:hover:bg-dark-800"
                                         onClick={closeMenu}
                                       >
                                         {subitem.name}
@@ -261,10 +271,10 @@ export default function Navbar() {
                           <Link
                             href={item.href}
                             className={cn(
-                              "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50",
+                              "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-dark-800",
                               isActive(item.href)
-                                ? "text-primary-600"
-                                : "text-gray-900"
+                                ? "text-primary-600 dark:text-yellow-300"
+                                : "text-gray-900 dark:text-yellow-400"
                             )}
                             onClick={closeMenu}
                           >
@@ -276,10 +286,14 @@ export default function Navbar() {
                   </div>
                   <div className="py-6 space-y-3">
                     <Link href="/auth/login" onClick={closeMenu}>
-                      <Button className="w-full" variant="outline">Log in</Button>
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full">
+                        <Button className="w-full border-gray-300 dark:border-yellow-500 dark:text-yellow-400 dark:hover:bg-black hover:shadow-md" variant="outline">Log in</Button>
+                      </motion.div>
                     </Link>
                     <Link href="/auth/signup" onClick={closeMenu}>
-                      <Button className="w-full bg-gradient-to-r from-primary-600 to-secondary-600">Sign up</Button>
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full">
+                        <Button className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 dark:from-yellow-500 dark:to-yellow-600 dark:text-gray-900">Sign up</Button>
+                      </motion.div>
                     </Link>
                   </div>
                 </div>

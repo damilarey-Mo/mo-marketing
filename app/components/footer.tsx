@@ -88,30 +88,30 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="bg-gray-50 dark:bg-black border-t border-gray-200 dark:border-yellow-500/20">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         {/* Top section with logo and newsletter */}
         <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div>
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold text-primary-600">SaaSify</span>
+              <span className="text-2xl font-bold text-primary-600 dark:text-yellow-400">SaaSify</span>
             </Link>
-            <p className="mt-4 text-sm text-gray-600 max-w-md">
+            <p className="mt-4 text-sm text-gray-600 dark:text-yellow-400/80 max-w-md">
               Streamline your workflow and boost productivity with our comprehensive 
               platform designed for modern teams.
             </p>
           </div>
           
           <div className="lg:ml-auto lg:max-w-md">
-            <h3 className="text-base font-semibold text-gray-900">
+            <h3 className="text-base font-semibold text-gray-900 dark:text-yellow-400">
               Subscribe to our newsletter
             </h3>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-gray-600 dark:text-yellow-400/80">
               Get the latest updates, articles, and resources delivered to your inbox.
             </p>
             
             {submitted ? (
-              <div className="mt-4 flex items-center text-sm text-green-600">
+              <div className="mt-4 flex items-center text-sm text-green-600 dark:text-yellow-500">
                 <Check className="mr-2 h-5 w-5" />
                 Thank you for subscribing!
               </div>
@@ -128,14 +128,14 @@ export default function Footer() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 focus:border-primary-500 focus:outline-none focus:ring-primary-500"
+                  className="w-full min-w-0 appearance-none rounded-md border border-gray-300 dark:border-yellow-500/30 bg-white dark:bg-black px-4 py-2 text-base text-gray-900 dark:text-yellow-400 placeholder-gray-500 dark:placeholder-yellow-500/50 focus:border-primary-500 dark:focus:border-yellow-400 focus:outline-none focus:ring-primary-500 dark:focus:ring-yellow-400"
                   placeholder="Enter your email"
                 />
                 <div className="mt-3 rounded-md sm:ml-3 sm:mt-0 sm:flex-shrink-0">
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="flex w-full items-center justify-center"
+                    className="flex w-full items-center justify-center dark:bg-yellow-500 dark:text-black dark:hover:bg-yellow-400"
                   >
                     {loading ? "Subscribing..." : "Subscribe"}
                     {!loading && <Send className="ml-2 h-4 w-4" />}
@@ -149,11 +149,11 @@ export default function Footer() {
         {/* Main navigation columns */}
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">Product</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-yellow-400">Product</h3>
             <ul role="list" className="mt-4 space-y-2">
               {navigation.product.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-gray-600 hover:text-primary-600 transition-colors">
+                  <Link href={item.href} className="text-sm text-gray-600 dark:text-yellow-400/70 hover:text-primary-600 dark:hover:text-yellow-400 transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -162,11 +162,11 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">Company</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-yellow-400">Company</h3>
             <ul role="list" className="mt-4 space-y-2">
               {navigation.company.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-gray-600 hover:text-primary-600 transition-colors">
+                  <Link href={item.href} className="text-sm text-gray-600 dark:text-yellow-400/70 hover:text-primary-600 dark:hover:text-yellow-400 transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -175,11 +175,11 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">Resources</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-yellow-400">Resources</h3>
             <ul role="list" className="mt-4 space-y-2">
               {navigation.resources.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-gray-600 hover:text-primary-600 transition-colors">
+                  <Link href={item.href} className="text-sm text-gray-600 dark:text-yellow-400/70 hover:text-primary-600 dark:hover:text-yellow-400 transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -188,11 +188,11 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">Legal</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-yellow-400">Legal</h3>
             <ul role="list" className="mt-4 space-y-2">
               {navigation.legal.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-sm text-gray-600 hover:text-primary-600 transition-colors">
+                  <Link href={item.href} className="text-sm text-gray-600 dark:text-yellow-400/70 hover:text-primary-600 dark:hover:text-yellow-400 transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -201,19 +201,19 @@ export default function Footer() {
           </div>
           
           <div className="col-span-2 md:col-span-1">
-            <h3 className="text-sm font-semibold text-gray-900">Headquarters</h3>
-            <address className="mt-4 not-italic text-sm text-gray-600">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-yellow-400">Headquarters</h3>
+            <address className="mt-4 not-italic text-sm text-gray-600 dark:text-yellow-400/80">
               123 Market Street<br />
               Suite 456<br />
               San Francisco, CA 94103<br />
               United States
             </address>
-            <p className="mt-4 text-sm text-gray-600">
-              <strong>Contact:</strong><br />
-              <a href="mailto:info@saasify.com" className="hover:text-primary-600 transition-colors">
+            <p className="mt-4 text-sm text-gray-600 dark:text-yellow-400/80">
+              <strong className="dark:text-yellow-400">Contact:</strong><br />
+              <a href="mailto:info@saasify.com" className="hover:text-primary-600 dark:hover:text-yellow-400 transition-colors">
                 info@saasify.com
               </a><br />
-              <a href="tel:+15551234567" className="hover:text-primary-600 transition-colors">
+              <a href="tel:+15551234567" className="hover:text-primary-600 dark:hover:text-yellow-400 transition-colors">
                 +1 (555) 123-4567
               </a>
             </p>
@@ -221,14 +221,14 @@ export default function Footer() {
         </div>
         
         {/* Bottom section with social icons and copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-yellow-500/20">
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex justify-center space-x-6 md:order-2">
               {navigation.social.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-400 dark:text-yellow-400/60 hover:text-gray-500 dark:hover:text-yellow-400"
                 >
                   <span className="sr-only">{item.name}</span>
                   <motion.div
@@ -240,7 +240,7 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-            <p className="mt-8 text-center text-xs leading-5 text-gray-500 md:order-1 md:mt-0 md:text-left">
+            <p className="mt-8 text-center text-xs leading-5 text-gray-500 dark:text-yellow-400/60 md:order-1 md:mt-0 md:text-left">
               &copy; {new Date().getFullYear()} SaaSify, Inc. All rights reserved.
             </p>
           </div>

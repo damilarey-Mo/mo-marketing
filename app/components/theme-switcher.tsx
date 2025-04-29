@@ -52,40 +52,55 @@ export default function ThemeSwitcher() {
   if (!mounted) return null;
 
   return (
-    <button
+    <motion.button
       onClick={toggleTheme}
       className={cn(
-        "rounded-full p-2 transition-colors",
+        "rounded-full p-2 transition-all duration-300 shadow-md hover:shadow-lg",
         theme === "dark" 
-          ? "bg-gray-800 text-gray-200 hover:bg-gray-700" 
-          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          ? "bg-gray-800 text-yellow-400 hover:bg-gray-700 border-2 border-yellow-500" 
+          : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
       )}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9, rotate: 15 }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="relative w-6 h-6">
         <motion.div
           initial={false}
           animate={{ 
             opacity: theme === "light" ? 1 : 0,
-            scale: theme === "light" ? 1 : 0 
+            scale: theme === "light" ? 1 : 0,
+            rotate: theme === "light" ? 0 : 90
           }}
-          transition={{ duration: 0.2 }}
+          transition={{ 
+            duration: 0.4,
+            type: "spring",
+            stiffness: 200
+          }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Sun className="h-5 w-5" />
+          <Sun className="h-5 w-5 text-yellow-500" />
         </motion.div>
         <motion.div
           initial={false}
           animate={{ 
             opacity: theme === "dark" ? 1 : 0,
-            scale: theme === "dark" ? 1 : 0 
+            scale: theme === "dark" ? 1 : 0,
+            rotate: theme === "dark" ? 0 : -90
           }}
-          transition={{ duration: 0.2 }}
+          transition={{ 
+            duration: 0.4,
+            type: "spring",
+            stiffness: 200
+          }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Moon className="h-5 w-5" />
+          <Moon className="h-5 w-5 text-yellow-400" />
         </motion.div>
       </div>
-    </button>
+    </motion.button>
   );
 } 
