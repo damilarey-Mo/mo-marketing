@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/app/components/ui/button";
@@ -8,31 +8,67 @@ import { Github, Mail, Lock, ArrowRight, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeSwitcher from "@/app/components/theme-switcher";
 
+// Mock users for demo purposes
+const DEMO_USERS = [
+  { email: "admin@example.com", password: "admin123", name: "Admin User" },
+  { email: "user@example.com", password: "user123", name: "Regular User" },
+  { email: "demo@example.com", password: "demo123", name: "Demo User" },
+];
+
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
 
-    // Simulate authentication process
     try {
-      // In a real app, you would make an API call to your auth endpoint
+      // Simulate API authentication (in a real app, this would be an API call)
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Navigate to dashboard on success
-      router.push("/dashboard");
+      // Check if the user exists in our mock data
+      const user = DEMO_USERS.find(
+        user => user.email === email && user.password === password
+      );
+
+      if (user) {
+        // Store user data in localStorage
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userName", user.name);
+        localStorage.setItem("userEmail", user.email);
+        
+        if (rememberMe) {
+          localStorage.setItem("rememberedEmail", email);
+        } else {
+          localStorage.removeItem("rememberedEmail");
+        }
+        
+        // Navigate to dashboard on success
+        router.push("/dashboard");
+      } else {
+        setError("Invalid email or password");
+      }
     } catch (err) {
-      setError("Invalid email or password");
+      setError("An error occurred during login. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
+
+  // Check for remembered email
+  useEffect(() => {
+    const remembered = localStorage.getItem("rememberedEmail");
+    if (remembered) {
+      setEmail(remembered);
+      setRememberMe(true);
+    }
+  }, []);
 
   const formAnimation = {
     hidden: { opacity: 0 },
@@ -75,6 +111,12 @@ export default function LoginPage() {
         >
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-yellow-400 bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-yellow-400 dark:to-yellow-500 bg-clip-text text-transparent">Log in to your account</h1>
           <p className="mt-2 text-gray-600 dark:text-yellow-400/80">Enter your credentials to access your account</p>
+          
+          <div className="mt-2 text-xs text-gray-500 dark:text-yellow-400/60 bg-gray-100 dark:bg-black p-2 rounded">
+            <p>Demo Accounts:</p>
+            <p>Email: admin@example.com | Password: admin123</p>
+            <p>Email: user@example.com | Password: user123</p>
+          </div>
         </motion.div>
 
         <AnimatePresence>
@@ -149,6 +191,8 @@ export default function LoginPage() {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
                 className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded dark:border-yellow-500 dark:bg-gray-700 dark:checked:bg-yellow-500 dark:focus:ring-yellow-400"
               />
               <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 dark:text-yellow-400">

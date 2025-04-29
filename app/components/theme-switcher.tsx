@@ -57,8 +57,8 @@ export default function ThemeSwitcher() {
       className={cn(
         "rounded-full p-2 transition-all duration-300 shadow-md hover:shadow-lg",
         theme === "dark" 
-          ? "bg-gray-800 text-yellow-400 hover:bg-gray-700 border-2 border-yellow-500" 
-          : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+          ? "bg-yellow-400 text-black hover:bg-yellow-300 border-2 border-yellow-500" 
+          : "bg-gray-700 text-yellow-400 hover:bg-gray-800 border border-gray-600"
       )}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       whileHover={{ scale: 1.1 }}
@@ -82,7 +82,7 @@ export default function ThemeSwitcher() {
           }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Sun className="h-5 w-5 text-yellow-500" />
+          <Sun className="h-5 w-5 text-yellow-400" />
         </motion.div>
         <motion.div
           initial={false}
@@ -98,7 +98,7 @@ export default function ThemeSwitcher() {
           }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Moon className="h-5 w-5 text-yellow-400" />
+          <Moon className="h-5 w-5 text-black" />
         </motion.div>
       </div>
     </motion.button>
