@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/app/lib/utils";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
 import { ThemeProvider } from "@/app/theme-provider";
+import ClientLayout from "@/app/client-layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,16 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={cn(
-        inter.className,
-        "min-h-screen bg-white dark:bg-black text-gray-900 dark:text-yellow-400"
-      )}>
+      <body className={`${inter.className} min-h-screen bg-white dark:bg-black text-gray-900 dark:text-yellow-400`}>
         <ThemeProvider>
-          <Navbar />
-          <main className="min-h-screen pt-16">
+          <ClientLayout>
             {children}
-          </main>
-          <Footer />
+          </ClientLayout>
         </ThemeProvider>
       </body>
     </html>

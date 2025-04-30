@@ -21,6 +21,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
 import ThemeSwitcher from "@/app/components/theme-switcher";
 import CybersecurityDashboard from "@/app/dashboard/cybersecurity";
+import { cn } from "@/app/lib/utils";
 
 // Mock data
 const stats = [
@@ -58,6 +59,7 @@ export default function DashboardPage() {
   const [alertsCount, setAlertsCount] = useState(2);
   const [showAlerts, setShowAlerts] = useState(false);
   const [securityAlerts, setSecurityAlerts] = useState(securityAlertsData);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     // Simulate loading data
@@ -73,6 +75,16 @@ export default function DashboardPage() {
     }, 1000);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Add scroll detection
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleLogout = () => {
@@ -98,7 +110,12 @@ export default function DashboardPage() {
   return (
     <div className="bg-gray-50 dark:bg-black min-h-screen">
       {/* Dashboard header */}
-      <header className="bg-white dark:bg-black shadow-sm dark:shadow-yellow-900/20 border-b border-gray-200 dark:border-yellow-900/20">
+      <header className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
+        scrolled
+          ? "bg-white/95 shadow-md backdrop-blur-sm dark:bg-black/95 dark:shadow-yellow-900/20"
+          : "bg-white dark:bg-black border-b border-gray-200 dark:border-yellow-900/20"
+      )}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold text-primary-600 dark:text-yellow-400">
@@ -186,7 +203,7 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <div className="flex">
+      <div className="flex pt-16">
         {/* Sidebar */}
         <aside className="w-64 min-h-screen bg-white dark:bg-black border-r border-gray-200 dark:border-yellow-900/20 hidden md:block">
           <nav className="p-4 space-y-2">
