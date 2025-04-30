@@ -70,12 +70,12 @@ export default function Navbar() {
           transition={{ duration: 0.5 }}
         >
           <Link href="/" className="-m-1.5 p-1.5 flex items-center">
-            <span className="sr-only">SaaSify</span>
+            <span className="sr-only">Mosecure</span>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="text-xl font-bold text-primary-600 dark:text-yellow-400">SaaSify</span>
+              <span className="text-xl font-bold text-primary-600 dark:text-yellow-400">Mosecure</span>
             </motion.div>
           </Link>
         </motion.div>
@@ -211,8 +211,8 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between">
                 <Link href="/" className="-m-1.5 p-1.5" onClick={closeMenu}>
-                  <span className="sr-only">SaaSify</span>
-                  <span className="text-xl font-bold text-primary-600 dark:text-yellow-400">SaaSify</span>
+                  <span className="sr-only">Mosecure</span>
+                  <span className="text-xl font-bold text-primary-600 dark:text-yellow-400">Mosecure</span>
                 </Link>
                 <button
                   type="button"

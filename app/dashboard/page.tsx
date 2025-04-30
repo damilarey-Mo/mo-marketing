@@ -15,13 +15,23 @@ import {
   HelpCircle,
   LogOut,
   Shield,
-  AlertTriangle
+  AlertTriangle,
+  Wrench as Tool,
+  Search,
+  FileWarning,
+  Globe,
+  Lock,
+  Code,
+  Key,
+  Database,
+  Network
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
 import ThemeSwitcher from "@/app/components/theme-switcher";
 import CybersecurityDashboard from "@/app/dashboard/cybersecurity";
 import { cn } from "@/app/lib/utils";
+import { tools } from "@/app/lib/tools";
 
 // Mock data
 const stats = [
@@ -119,7 +129,7 @@ export default function DashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold text-primary-600 dark:text-yellow-400">
-              SaaSify
+              Mosecure
             </Link>
           </div>
           <div className="flex items-center space-x-4">
@@ -246,6 +256,13 @@ export default function DashboardPage() {
               )}
             </button>
             <Link 
+              href="/dashboard/tools"
+              className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-yellow-400 hover:text-primary-700 dark:hover:text-yellow-300 hover:bg-gray-50 dark:hover:bg-yellow-900/10"
+            >
+              <Tool className="mr-3 h-5 w-5 text-gray-400 dark:text-yellow-400/60 group-hover:text-primary-500 dark:group-hover:text-yellow-400" aria-hidden="true" />
+              Security Tools
+            </Link>
+            <Link 
               href="#" 
               className="group flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-700 dark:text-yellow-400 hover:text-primary-700 dark:hover:text-yellow-300 hover:bg-gray-50 dark:hover:bg-yellow-900/10"
             >
@@ -298,150 +315,165 @@ export default function DashboardPage() {
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 p-6">
-          <div className="max-w-6xl mx-auto">
+        <div className="flex-1 min-w-0 overflow-auto">
+          <div className="py-6 px-4 sm:px-6 lg:px-8">
             {activeTab === "overview" && (
-              <>
-                {/* Welcome section */}
-                <motion.div 
-                  className="bg-gradient-to-r from-primary-600 to-primary-700 dark:from-yellow-600 dark:to-yellow-700 rounded-lg shadow-md p-6 text-white dark:text-black mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <h1 className="text-2xl font-bold">Welcome back, {userName}!</h1>
-                  <p className="mt-1">Here's what's happening with your projects today.</p>
-                  
-                  {alertsCount > 0 && (
-                    <div className="mt-3 p-2 bg-red-500/20 dark:bg-black/20 rounded-md flex items-center">
-                      <AlertTriangle className="h-5 w-5 text-white dark:text-black mr-2" />
-                      <span className="text-sm">
-                        You have {alertsCount} security {alertsCount === 1 ? 'alert' : 'alerts'} that require your attention
-                      </span>
-                      <Button
-                        className="ml-auto bg-white/20 hover:bg-white/30 text-white dark:bg-black/30 dark:hover:bg-black/40 dark:text-black text-xs"
-                        size="sm"
-                        onClick={() => setActiveTab("security")}
-                      >
-                        View Alerts
-                      </Button>
-                    </div>
-                  )}
-                  
-                  <div className="mt-4">
-                    <Button
-                      className="bg-white text-primary-600 hover:bg-primary-50 dark:bg-black dark:hover:bg-gray-900 dark:text-yellow-400"
-                      size="sm"
-                    >
-                      Create New Project
-                    </Button>
-                  </div>
-                </motion.div>
-
+              <div className="space-y-6">
+                {/* Dashboard heading */}
+                <h1 className="text-2xl font-semibold text-gray-900 dark:text-yellow-400">
+                  Welcome back, {userName}
+                </h1>
+                
                 {/* Stats */}
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-6">
-                  {stats.map((stat, index) => (
-                    <motion.div 
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                  {stats.map((stat) => (
+                    <div
                       key={stat.name}
-                      className="bg-white dark:bg-black rounded-lg shadow-sm dark:shadow-yellow-900/20 p-6 border border-gray-100 dark:border-yellow-900/20"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="bg-white dark:bg-black overflow-hidden shadow rounded-lg border border-gray-200 dark:border-yellow-900/20"
                     >
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 p-3 rounded-md bg-primary-100 dark:bg-yellow-500/20 text-primary-600 dark:text-yellow-400">
-                          <stat.icon className="h-6 w-6" />
-                        </div>
-                        <div className="ml-4">
-                          <h2 className="text-sm font-medium text-gray-500 dark:text-yellow-400/70">{stat.name}</h2>
-                          <p className="text-2xl font-semibold text-gray-900 dark:text-yellow-400">{stat.value}</p>
-                          <p className={`text-sm ${
-                            stat.change.startsWith('+') 
-                              ? 'text-green-600 dark:text-green-400' 
-                              : 'text-red-600 dark:text-red-400'
-                          }`}>
-                            {stat.change}
-                          </p>
+                      <div className="p-5">
+                        <div className="flex items-center">
+                          <div className="flex-shrink-0">
+                            <stat.icon className="h-6 w-6 text-gray-400 dark:text-yellow-400" aria-hidden="true" />
+                          </div>
+                          <div className="ml-5 w-0 flex-1">
+                            <dt className="text-sm font-medium text-gray-500 dark:text-yellow-400/60 truncate">{stat.name}</dt>
+                            <dd className="flex items-baseline">
+                              <div className="text-2xl font-semibold text-gray-900 dark:text-yellow-400">{stat.value}</div>
+                              <div className={`ml-2 flex items-baseline text-sm font-semibold ${
+                                stat.change.startsWith('+') ? 'text-green-600' : 'text-red-600'
+                              }`}>
+                                {stat.change}
+                              </div>
+                            </dd>
+                          </div>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-
-                {/* Two column layout */}
-                <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                  {/* Recent activity */}
-                  <motion.div 
-                    className="bg-white dark:bg-black rounded-lg shadow-sm dark:shadow-yellow-900/20 p-6 border border-gray-100 dark:border-yellow-900/20"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    <h2 className="text-lg font-medium text-gray-900 dark:text-yellow-400 mb-4">Recent Activity</h2>
-                    <div className="space-y-4">
-                      {recentActivities.map((activity) => (
-                        <div key={activity.id} className="flex items-start">
-                          <div className="flex-shrink-0">
-                            <div className="w-2 h-2 mt-2 rounded-full bg-primary-500 dark:bg-yellow-400"></div>
-                          </div>
-                          <div className="ml-3">
-                            <p className="text-sm font-medium text-gray-900 dark:text-yellow-400">{activity.user}</p>
-                            <p className="text-sm text-gray-500 dark:text-yellow-400/80">{activity.action}</p>
-                            <p className="text-xs text-gray-400 dark:text-yellow-400/60">{activity.time}</p>
-                          </div>
-                        </div>
-                      ))}
+                
+                {/* Security Tools */}
+                <div className="bg-white dark:bg-black shadow rounded-lg border border-gray-200 dark:border-yellow-900/20 overflow-hidden">
+                  <div className="px-4 py-5 sm:px-6 flex justify-between items-center">
+                    <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-yellow-400">Security Tools</h3>
+                    <Link href="/dashboard/tools" passHref>
+                      <Button className="bg-black text-yellow-400 border border-yellow-400/20 hover:bg-yellow-900/10 text-sm">
+                        View All Tools
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="border-t border-gray-200 dark:border-yellow-900/20 px-4 py-5 sm:p-6">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {tools.slice(0, 6).map((tool) => {
+                        const Icon = tool.icon;
+                        return (
+                          <Link href={`/dashboard/tools/${tool.id}`} key={tool.id} passHref>
+                            <div className="p-4 border border-gray-200 dark:border-yellow-900/20 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-yellow-900/10 transition-colors duration-200 flex items-start">
+                              <div className={`p-2 rounded-md ${tool.color.replace('text-', 'bg-') + '/10'} mr-3`}>
+                                <Icon className={`h-5 w-5 ${tool.color}`} />
+                              </div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 dark:text-yellow-400">{tool.name}</h4>
+                                <p className="text-sm text-gray-500 dark:text-yellow-400/70 mt-1">{tool.description}</p>
+                              </div>
+                            </div>
+                          </Link>
+                        );
+                      })}
                     </div>
-                    <div className="mt-4">
-                      <Link href="#" className="text-sm font-medium text-primary-600 dark:text-yellow-400 hover:text-primary-500 dark:hover:text-yellow-300">
-                        View all activity
+                    
+                    <div className="mt-6 text-center">
+                      <Link href="/dashboard/tools" passHref>
+                        <Button variant="outline" className="text-yellow-400 border border-yellow-400/20 hover:bg-yellow-900/10">
+                          Explore All Security Tools
+                        </Button>
                       </Link>
                     </div>
-                  </motion.div>
-
-                  {/* Upcoming events */}
-                  <motion.div 
-                    className="bg-white dark:bg-black rounded-lg shadow-sm dark:shadow-yellow-900/20 p-6 border border-gray-100 dark:border-yellow-900/20"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    <h2 className="text-lg font-medium text-gray-900 dark:text-yellow-400 mb-4">Upcoming Events</h2>
-                    <div className="space-y-4">
-                      {upcomingEvents.map((event) => (
-                        <div key={event.id} className="flex items-start">
-                          <div className="flex-shrink-0">
-                            <div className={`p-2 rounded-md ${
-                              event.type === 'meeting' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' :
-                              event.type === 'deadline' ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400' :
-                              'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
-                            }`}>
-                              <Calendar className="h-4 w-4" />
+                  </div>
+                </div>
+                
+                {/* Recent Activities */}
+                <div className="bg-white dark:bg-black shadow rounded-lg border border-gray-200 dark:border-yellow-900/20 overflow-hidden">
+                  <div className="px-4 py-5 sm:px-6">
+                    <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-yellow-400">Recent Security Activities</h3>
+                  </div>
+                  <div className="border-t border-gray-200 dark:border-yellow-900/20">
+                    <ul className="divide-y divide-gray-200 dark:divide-yellow-900/20">
+                      {recentActivities.map((activity) => (
+                        <li key={activity.id} className="px-4 py-4 sm:px-6">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <div className="flex-shrink-0">
+                                <div className="h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                                  <span className="text-gray-500 dark:text-yellow-400 text-sm font-medium">{activity.user.charAt(0)}</span>
+                                </div>
+                              </div>
+                              <div className="ml-3">
+                                <p className="text-sm font-medium text-gray-900 dark:text-yellow-400">{activity.user}</p>
+                                <p className="text-sm text-gray-500 dark:text-yellow-400/70">{activity.action}</p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-xs text-gray-500 dark:text-yellow-400/60">{activity.time}</p>
                             </div>
                           </div>
-                          <div className="ml-3">
-                            <p className="text-sm font-medium text-gray-900 dark:text-yellow-400">{event.title}</p>
-                            <p className="text-sm text-gray-500 dark:text-yellow-400/70">{event.date}</p>
-                          </div>
-                        </div>
+                        </li>
                       ))}
-                    </div>
-                    <div className="mt-4">
-                      <Link href="#" className="text-sm font-medium text-primary-600 dark:text-yellow-400 hover:text-primary-500 dark:hover:text-yellow-300">
-                        View calendar
+                    </ul>
+                  </div>
+                </div>
+                
+                {/* Quick Actions */}
+                <div className="bg-white dark:bg-black shadow rounded-lg border border-gray-200 dark:border-yellow-900/20 overflow-hidden">
+                  <div className="px-4 py-5 sm:px-6">
+                    <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-yellow-400">Quick Actions</h3>
+                  </div>
+                  <div className="border-t border-gray-200 dark:border-yellow-900/20 px-4 py-5 sm:p-6">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                      <Link href="/dashboard/tools/vulnerability-scanner" passHref>
+                        <Button 
+                          className="w-full flex items-center justify-center py-6 bg-black text-yellow-400 border border-yellow-400/20 hover:bg-yellow-900/10"
+                        >
+                          <Search className="mr-2 h-5 w-5 text-blue-500" />
+                          Scan for Vulnerabilities
+                        </Button>
+                      </Link>
+                      <Link href="/dashboard/tools/url-scanner" passHref>
+                        <Button 
+                          className="w-full flex items-center justify-center py-6 bg-black text-yellow-400 border border-yellow-400/20 hover:bg-yellow-900/10"
+                        >
+                          <Globe className="mr-2 h-5 w-5 text-green-500" />
+                          Check URL Safety
+                        </Button>
+                      </Link>
+                      <Link href="/dashboard/tools/malware-detector" passHref>
+                        <Button 
+                          className="w-full flex items-center justify-center py-6 bg-black text-yellow-400 border border-yellow-400/20 hover:bg-yellow-900/10"
+                        >
+                          <FileWarning className="mr-2 h-5 w-5 text-red-500" />
+                          Scan for Malware
+                        </Button>
+                      </Link>
+                      <Link href="/dashboard/tools/security-advisor" passHref>
+                        <Button 
+                          className="w-full flex items-center justify-center py-6 bg-black text-yellow-400 border border-yellow-400/20 hover:bg-yellow-900/10"
+                        >
+                          <Shield className="mr-2 h-5 w-5 text-teal-500" />
+                          AI Security Advisor
+                        </Button>
                       </Link>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
-              </>
+              </div>
             )}
-
-            {/* Security Tab */}
+            
             {activeTab === "security" && (
               <CybersecurityDashboard />
             )}
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );

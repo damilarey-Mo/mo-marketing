@@ -2,33 +2,33 @@ import Image from "next/image";
 import CTASection from "@/app/components/sections/cta";
 
 export const metadata = {
-  title: "About Us - SaaSify",
-  description: "Learn about our mission and the team behind SaaSify",
+  title: "About Us - Mosecure",
+  description: "Learn about our mission and the team behind Mosecure",
 };
 
 const team = [
   {
     name: "Michael Johnson",
     role: "Founder & CEO",
-    bio: "Michael has over 15 years of experience in SaaS development and product management.",
+    bio: "Michael has over 15 years of experience in cybersecurity and enterprise security management.",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     name: "Sarah Chen",
     role: "CTO",
-    bio: "Sarah previously led engineering teams at several successful tech startups.",
+    bio: "Sarah previously led security engineering teams at several Fortune 500 companies.",
     image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
     name: "David Rodriguez",
     role: "VP of Product",
-    bio: "David brings a decade of experience in UX/UI design and product development.",
+    bio: "David brings a decade of experience in security product development and threat analysis.",
     image: "https://randomuser.me/api/portraits/men/67.jpg",
   },
   {
     name: "Emily Taylor",
     role: "Head of Marketing",
-    bio: "Emily has helped scale multiple SaaS companies through creative marketing strategies.",
+    bio: "Emily has helped scale multiple cybersecurity companies through strategic marketing campaigns.",
     image: "https://randomuser.me/api/portraits/women/17.jpg",
   },
 ];
@@ -42,10 +42,10 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                About SaaSify
+                About Mosecure
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                We're building the ultimate productivity platform to help businesses work smarter, not harder.
+                We're building the most advanced cybersecurity platform to protect businesses from evolving threats.
               </p>
             </div>
           </div>
@@ -60,13 +60,13 @@ export default function AboutPage() {
               <div className="lg:max-w-lg">
                 <h2 className="text-base font-semibold leading-7 text-primary-600">Our Mission</h2>
                 <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                  Empowering teams to achieve more
+                  Securing the digital world
                 </p>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
-                  At SaaSify, we believe that great software should make complex tasks simple. Our mission is to create tools that empower teams to work efficiently, collaborate seamlessly, and achieve their goals.
+                  At Mosecure, we believe that robust security should be accessible to all organizations. Our mission is to create tools that protect businesses from cyber threats, detect vulnerabilities, and respond to incidents effectively.
                 </p>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
-                  Founded in 2020, we've grown from a small team with a big idea to a thriving company serving thousands of businesses worldwide. Our platform continues to evolve based on customer feedback and changing market needs.
+                  Founded in 2020, we've grown from a small security team with deep expertise to a leading cybersecurity company serving thousands of businesses worldwide. Our platform continues to evolve based on the latest threat intelligence and security best practices.
                 </p>
                 <div className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600">
                   <div className="relative pl-9">
@@ -74,27 +74,27 @@ export default function AboutPage() {
                       <span className="absolute left-1 top-1 h-5 w-5 rounded-full bg-primary-50 flex items-center justify-center">
                         <span className="text-primary-600 font-bold">1</span>
                       </span>
-                      User-focused design
+                      Advanced threat detection
                     </div>
-                    <p className="mt-2">We prioritize intuitive interfaces and seamless experiences.</p>
+                    <p className="mt-2">We employ cutting-edge technology to identify and neutralize threats.</p>
                   </div>
                   <div className="relative pl-9">
                     <div className="font-semibold text-gray-900">
                       <span className="absolute left-1 top-1 h-5 w-5 rounded-full bg-primary-50 flex items-center justify-center">
                         <span className="text-primary-600 font-bold">2</span>
                       </span>
-                      Continuous innovation
+                      Proactive security
                     </div>
-                    <p className="mt-2">We're constantly improving our platform with new features.</p>
+                    <p className="mt-2">We continuously monitor for vulnerabilities before they can be exploited.</p>
                   </div>
                   <div className="relative pl-9">
                     <div className="font-semibold text-gray-900">
                       <span className="absolute left-1 top-1 h-5 w-5 rounded-full bg-primary-50 flex items-center justify-center">
                         <span className="text-primary-600 font-bold">3</span>
                       </span>
-                      Customer success
+                      Enterprise protection
                     </div>
-                    <p className="mt-2">We're committed to helping our customers achieve their goals.</p>
+                    <p className="mt-2">We're committed to keeping our customers' data and systems secure.</p>
                   </div>
                 </div>
               </div>
@@ -120,7 +120,7 @@ export default function AboutPage() {
               Meet our team
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              We're a diverse group of passionate individuals working together to build amazing products.
+              We're a team of cybersecurity experts dedicated to protecting organizations from digital threats.
             </p>
           </div>
           <ul

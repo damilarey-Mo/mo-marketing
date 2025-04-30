@@ -94,11 +94,10 @@ export default function Footer() {
         <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div>
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold text-primary-600 dark:text-yellow-400">SaaSify</span>
+              <span className="text-2xl font-bold text-primary-600 dark:text-yellow-400">Mosecure</span>
             </Link>
             <p className="mt-4 text-sm text-gray-600 dark:text-yellow-400/80 max-w-md">
-              Streamline your workflow and boost productivity with our comprehensive 
-              platform designed for modern teams.
+              Advanced cybersecurity platform for enterprise threat monitoring, detection, and response.
             </p>
           </div>
           
@@ -241,7 +240,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="mt-8 text-center text-xs leading-5 text-gray-500 dark:text-yellow-400/60 md:order-1 md:mt-0 md:text-left">
-              &copy; {new Date().getFullYear()} SaaSify, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Mosecure, Inc. All rights reserved.
             </p>
           </div>
         </div>

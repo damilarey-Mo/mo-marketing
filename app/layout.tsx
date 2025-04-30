@@ -9,8 +9,8 @@ import ClientLayout from "@/app/client-layout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SaaSify - Modern SaaS Marketing Template",
-  description: "A modern SaaS marketing template built with Next.js, TypeScript, and Tailwind CSS",
+  title: "Mosecure - Advanced Cybersecurity Platform",
+  description: "A cutting-edge cybersecurity platform for enterprise security monitoring and threat detection",
 };
 
 export default function RootLayout({

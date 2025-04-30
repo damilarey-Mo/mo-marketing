@@ -138,7 +138,7 @@ export default function CybersecurityDashboard() {
           <div>
             <h1 className="text-2xl font-bold flex items-center">
               <Shield className="mr-2 h-6 w-6" />
-              Security Command Center
+              Mosecure Command Center
             </h1>
             <p className="mt-1">Monitor and manage your security posture</p>
           </div>
