@@ -340,7 +340,7 @@ export default function MonitoringDashboard() {
                 <label className="block text-sm font-medium text-gray-700 dark:text-yellow-400 mb-1">
                   Notification Threshold
                 </label>
-                <select
+                <Select
                   value={newProject.monitoringSettings.notificationThreshold}
                   onChange={(e) => setNewProject({
                     ...newProject,
@@ -349,12 +349,12 @@ export default function MonitoringDashboard() {
                       notificationThreshold: e.target.value as NotificationThreshold
                     }
                   })}
-                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm rounded-md dark:bg-gray-900 dark:border-yellow-900/20 dark:text-yellow-400"
+                  className="mt-2"
                 >
                   <option value="all">All Events</option>
-                  <option value="high">High Severity & Above</option>
+                  <option value="high">High Priority Only</option>
                   <option value="critical">Critical Only</option>
-                </select>
+                </Select>
               </div>
             </div>
             <div className="flex justify-end space-x-4">
@@ -503,21 +503,21 @@ export default function MonitoringDashboard() {
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-yellow-400">Recent Security Events</h2>
             <div className="flex items-center space-x-4">
-              <select
+              <Select
                 value={filterSeverity}
                 onChange={(e) => setFilterSeverity(e.target.value)}
-                className="text-sm border-gray-300 rounded-md dark:bg-gray-900 dark:border-yellow-900/20 dark:text-yellow-400"
+                className="w-32"
               >
-                <option value="all">All Severities</option>
+                <option value="all">All Severity</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
                 <option value="critical">Critical</option>
-              </select>
-              <select
+              </Select>
+              <Select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                className="text-sm border-gray-300 rounded-md dark:bg-gray-900 dark:border-yellow-900/20 dark:text-yellow-400"
+                className="w-32 ml-2"
               >
                 <option value="all">All Types</option>
                 <option value="login">Login</option>
@@ -525,7 +525,7 @@ export default function MonitoringDashboard() {
                 <option value="attack">Attack</option>
                 <option value="vulnerability">Vulnerability</option>
                 <option value="user_activity">User Activity</option>
-              </select>
+              </Select>
             </div>
           </div>
         </div>
