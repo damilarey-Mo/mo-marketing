@@ -35,18 +35,20 @@ import { tools } from "@/app/lib/tools";
 
 // Mock data
 const stats = [
-  { name: "Total Users", value: "2,543", icon: Users, change: "+12.3%" },
-  { name: "Active Projects", value: "48", icon: FileText, change: "+5.4%" },
-  { name: "Completion Rate", value: "87%", icon: BarChart, change: "+2.7%" },
-  { name: "Support Tickets", value: "14", icon: MessageSquare, change: "-3.2%" },
+  { name: "Monthly Visitor", value: "1,543", icon: Users, change: "+12.3%" },
+  { name: "File scanned", value: "248", icon: FileText, change: "+5.4%" },
+  { name: "Security Level", value: "87%", icon: BarChart, change: "+2.7%" },
+  { name: "Security Report", value: "14", icon: MessageSquare, change: "-3.2%" },
 ];
 
 const recentActivities = [
-  { id: 1, user: "John Smith", action: "Created a new project", time: "2 hours ago" },
-  { id: 2, user: "Sarah Johnson", action: "Added a comment", time: "4 hours ago" },
-  { id: 3, user: "David Wilson", action: "Completed a task", time: "yesterday" },
-  { id: 4, user: "Emma Brown", action: "Uploaded a file", time: "yesterday" },
-  { id: 5, user: "Michael Davis", action: "Updated project status", time: "2 days ago" },
+  { id: 1, user: "John Kanegham", action: "Created a new account", time: "10:45 AM" },
+  { id: 2, user: "Sarah Brascoe", action: "Multiple Failed Login Attempts", time: "10:11 AM" },
+  { id: 3, user: "David Connerie", action: "Logged in from a new device", time: "08:32 AM" },
+  { id: 4, user: "Emma Thorton", action: "Excessive API Requests from a Single IP", time: "04:32 AM" },
+  { id: 5, user: "Michael Rusell", action: "IP Address & Location Change During Session", time: "01:22 AM" },
+  { id: 6, user: "Olivia Taylor", action: "Unusual Login Activity", time: "12:49 AM" },
+  { id: 7, user: "Daniel Milner", action: "Attempt Access to restricted page", time: "12:34 AM" },
 ];
 
 const upcomingEvents = [
@@ -205,7 +207,7 @@ export default function DashboardPage() {
               <span>{userName}</span>
               <img
                 className="h-8 w-8 rounded-full"
-                src="https://randomuser.me/api/portraits/men/32.jpg"
+                src="https://lh3.googleusercontent.com/a/ACg8ocKqZw0kJW7jBv2xx6wwZiAkZar8rrjX4iZSsqOEUrqgUvba0FMsXyiP1D2MjA8tPTDGZ8UgIODKuJBHFE6u-LwyHqDUo9YG=s576-c-no"
                 alt="User avatar"
               />
             </button>

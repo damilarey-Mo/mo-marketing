@@ -8,7 +8,18 @@ import {
   Key, 
   Database, 
   Network, 
-  AlertTriangle 
+  AlertTriangle,
+  Fingerprint,
+  Wifi,
+  FileText,
+  Mail,
+  ShieldAlert,
+  Webhook,
+  Server,
+  Smartphone,
+  Cloud,
+  Users,
+  Activity
 } from "lucide-react";
 
 export interface Tool {
@@ -100,6 +111,94 @@ export const tools: Tool[] = [
     icon: Shield,
     category: 'analyze',
     color: 'text-teal-500'
+  },
+  {
+    id: 'authentication-tester',
+    name: 'Authentication Tester',
+    description: 'Test authentication mechanisms for vulnerabilities',
+    icon: Fingerprint,
+    category: 'analyze',
+    color: 'text-violet-500'
+  },
+  {
+    id: 'wifi-security',
+    name: 'WiFi Security Analyzer',
+    description: 'Analyze WiFi networks for security vulnerabilities',
+    icon: Wifi,
+    category: 'scan',
+    color: 'text-sky-500'
+  },
+  {
+    id: 'log-analyzer',
+    name: 'Security Log Analyzer',
+    description: 'Analyze security logs for suspicious activities',
+    icon: FileText,
+    category: 'monitor',
+    color: 'text-amber-500'
+  },
+  {
+    id: 'phishing-simulator',
+    name: 'Phishing Simulator',
+    description: 'Test and train users against phishing attacks',
+    icon: Mail,
+    category: 'protect',
+    color: 'text-rose-500'
+  },
+  {
+    id: 'firewall-tester',
+    name: 'Firewall Rules Tester',
+    description: 'Test and verify firewall rules and configurations',
+    icon: ShieldAlert,
+    category: 'analyze',
+    color: 'text-lime-500'
+  },
+  {
+    id: 'api-fuzzer',
+    name: 'API Fuzzer',
+    description: 'Test APIs for security vulnerabilities through fuzzing',
+    icon: Webhook,
+    category: 'scan',
+    color: 'text-fuchsia-500'
+  },
+  {
+    id: 'container-scanner',
+    name: 'Container Security Scanner',
+    description: 'Scan containers and images for security issues',
+    icon: Server,
+    category: 'scan',
+    color: 'text-emerald-500'
+  },
+  {
+    id: 'mobile-security',
+    name: 'Mobile App Security Scanner',
+    description: 'Analyze mobile applications for security vulnerabilities',
+    icon: Smartphone,
+    category: 'scan',
+    color: 'text-cyan-600'
+  },
+  {
+    id: 'cloud-security',
+    name: 'Cloud Security Analyzer',
+    description: 'Analyze cloud infrastructure for security misconfigurations',
+    icon: Cloud,
+    category: 'analyze',
+    color: 'text-blue-600'
+  },
+  {
+    id: 'access-analyzer',
+    name: 'Access Control Analyzer',
+    description: 'Analyze and audit access control policies',
+    icon: Users,
+    category: 'analyze',
+    color: 'text-purple-600'
+  },
+  {
+    id: 'website-monitoring',
+    name: 'Website Monitoring',
+    description: 'Monitor websites for security issues, user activity, and performance metrics',
+    icon: Activity,
+    category: 'monitor',
+    color: 'text-emerald-500'
   }
 ];
 

@@ -8,10 +8,10 @@ export const metadata = {
 
 const team = [
   {
-    name: "Michael Johnson",
+    name: "Damilarey Moshood",
     role: "Founder & CEO",
-    bio: "Michael has over 15 years of experience in cybersecurity and enterprise security management.",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    bio: "Damilarey has over 5 years of experience in Tech Support and Full Stack Web Development",
+    image: "https://dareymoshood-git-main-oluwadamilares-projects-a92feb5a.vercel.app/_next/image?url=%2Fimages%2Favatar.jpg&w=384&q=75",
   },
   {
     name: "Sarah Chen",
