@@ -26,7 +26,6 @@ import {
 import { Button } from "@/app/components/ui/button";
 import Head from "next/head";
 import Link from "next/link";
-import Navbar from "@/app/components/navbar";
 
 const features = [
   {
@@ -98,19 +97,18 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>MO Security - Enterprise Cybersecurity & IT Solutions</title>
+        <title>Mosecure - Enterprise Cybersecurity & IT Solutions</title>
         <meta name="description" content="Leading provider of enterprise-grade cybersecurity solutions. Protect your business with our suite of 30+ security tools, featuring AI-powered threat detection, zero-trust architecture, and 24/7 security monitoring." />
         <meta name="keywords" content="cybersecurity, IT security, enterprise security, threat detection, zero trust, vulnerability assessment, cloud security, SIEM, endpoint protection, network security" />
-        <meta property="og:title" content="MO Security - Enterprise Cybersecurity & IT Solutions" />
+        <meta property="og:title" content="Mosecure - Enterprise Cybersecurity & IT Solutions" />
         <meta property="og:description" content="Protect your business with enterprise-grade security solutions. Features 30+ security tools with AI-powered threat detection." />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <Navbar />
-      <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 pt-16">
+      <div className="min-h-screen bg-gradient-to-b from-black to-gray-900">
         {/* Hero Section */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden pt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
