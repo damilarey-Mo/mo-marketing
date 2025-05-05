@@ -20,8 +20,8 @@ export default function ClientLayout({
     setIsLoggedIn(loggedIn);
   }, [pathname]); // Re-check when pathname changes
   
-  // Hide navbar on dashboard routes or when logged in
-  const shouldShowNavbar = !isLoggedIn && !pathname.startsWith("/dashboard");
+  // Only hide navbar on auth pages (login/signup)
+  const shouldShowNavbar = !pathname.startsWith("/auth");
   
   return (
     <>

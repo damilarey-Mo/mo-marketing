@@ -28,10 +28,16 @@ export default function LoginPage() {
       // For demo purposes, we'll simulate a successful login
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // Format the username nicely from the email
+      const userName = email.split('@')[0]
+        .split(/[._-]/)
+        .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+        .join(' ');
+      
       // Simulate successful login
       login({
         isAdmin: email.includes("admin"),
-        userName: email.split("@")[0]
+        userName: userName
       });
       
       router.push("/dashboard");
@@ -51,9 +57,12 @@ export default function LoginPage() {
       // For demo purposes, we'll simulate a successful login
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // Simulate a Google user name
+      const userName = "John Doe"; // In real implementation, this would come from Google OAuth
+      
       login({
         isAdmin: false,
-        userName: "Google User"
+        userName: userName
       });
       
       router.push("/dashboard");
